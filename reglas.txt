@@ -1,0 +1,10 @@
+Al comenzar la aplicación se nos solicitará indicar el número de jugadores. Crearemos las instancias de los jugadores pertinentes y los introduciremos en un ArrayList de jugadores. Los jugadores irán tirando el dado y avanzando casillas hasta que alguno llegue a la casilla 63.
+Tener en cuenta que:
+
+las posiciones 5, 9, 14, 18, 23, 27, 32, 36, 41, 45, 50, 54 y 59 corresponden a las ocas. Si el jugador cae en ellas se imprimirá el texto »De oca a oca y tiro porque me toca», el jugador avanzará hasta la siguiente casilla de la oca y volverá a tirar. Para programar esto, una buena idea sería tener un HashMap en el que la clave sería la casilla en la que ha caído el jugador y el valor sería la casilla de destino. Luego, llamando al método hashmap.containsKey(posicion) evaluaremos si el jugador ha caído en una casilla con oca, y si es así, recuperaremos la correspondiente casilla de destino.
+si el jugador cae en la casilla 19, caerá en la pensión y no podrá tirar el dado en los dos siguientes turnos.
+si el jugador cae en la casilla 3, caerá en el pozo y no podrá tirar el dado en el siguiente turno.
+si el jugador cae en la casilla 52, caerá en la cárcel y no podrá tirar el dado en los tres siguientes turnos.
+las casillas 6 y 12 son puentes. Si el jugador cae en ellas se imprimirá el texto »De puente a puente y tiro porque me lleva la corriente». En este caso, si cayó en la casilla 6 irá a la 12 y si cayó en la 12 irá a la 6. En ambos casos, volverá a tirar.
+las casillas 26 y 53 son dados. Si el jugador cae en ellas se imprimirá el texto »De dado a dado y tiro porque me ha tocado». En este caso, si cayó en la casilla 26 irá a la 53 y si cayó en la 53 irá a la 26. En ambos casos se volverá a tirar.
+la casilla 58 es la muerte, el jugador que cae en ella debe regresar a la casilla 1).

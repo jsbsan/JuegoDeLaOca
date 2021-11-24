@@ -1,0 +1,21 @@
+' Gambas class file
+
+Inherits Regla
+
+'Regla:
+'la casilla 58 es la muerte, el jugador que cae en ella debe regresar a la casilla 1).
+
+Public Function ejecuta(hjugador As Jugador) As Mensaje'
+
+  Dim mensajeTmp As New Mensaje
+
+  mensajeTmp.texto = ""
+  mensajeTmp.valor = True
+  If hjugador.situcasilla = 58 Then
+    Print "El jugador " & hjugador.nombre & ", ha caido  en la casilla 58, vuelve a la casilla 1."
+    hjugador.situcasilla = 1
+
+  Endif
+  Return mensajetmp
+
+End

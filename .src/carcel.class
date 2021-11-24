@@ -1,0 +1,21 @@
+' Gambas class file
+
+Inherits Regla
+'Regla:
+'si el jugador cae en la casilla 52, caerá en la cárcel y no podrá tirar el dado en los tres siguientes turnos.
+
+Public Function ejecuta(hjugador As Jugador) As Mensaje'
+
+  Dim mensajeTmp As New Mensaje
+
+  mensajeTmp.texto = ""
+  mensajeTmp.valor = True
+
+  If hjugador.situcasilla = 52 Then
+    Print "El jugador " & hjugador.nombre & ", ha caido casilla 52 y está en la carcel. No podrá tirar el dado en los siguiente tres turnos"
+    hjugador.turno = -4
+
+  Endif
+  Return mensajetmp
+
+End

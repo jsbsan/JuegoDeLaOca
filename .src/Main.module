@@ -1,0 +1,95 @@
+' Gambas module file
+
+'' FUENTE: https://pablomonteserin.com/curso/java/ejercicio-juego-de-la-oca/
+Public listaJugadores As New Jugador[]
+
+Public Sub Main()
+
+  Dim numero_jugadores As Integer
+  Dim reglas As New Regla[]
+
+  Print "******************************"
+  Print "**      JUEGO DE LA OCA     **"
+  Print "******************************"
+
+  Print "Numero de jugadores:"
+  Input numero_jugadores
+  Print "Numero de jugadores es de..."; numero_jugadores
+
+  Dim a As Integer
+
+  For A = 0 To numero_jugadores - 1
+
+    Print "Nombre jugador ["; a + 1; "]:"
+    Dim nombre As String
+    Input nombre
+    If nombre = "" Then nombre = "Jugador-" & Right("000" & Str$(a + 1), 3)
+    Dim jtmp As New Jugador(nombre, 0)
+    listaJugadores.Add(jtmp)
+  Next
+  'iniciar juego
+  Dim msg As Mensaje
+  'cargo reglas
+  Dim rtmp As Regla'regla temporal para el for each
+
+  'tipos de regla:
+
+  Dim hcarcel As New Carcel
+  Dim hcasillasDados As New CasillaDados
+  Dim f As New FinFuego
+  Dim pen As New Pension
+  Dim poz As New Pozo
+  Dim puen As New Puentes
+  Dim casillauno As New VuelveaCasillaUno
+  Dim s As New SaltoDeOcaAOca
+
+  'añado las reglas:
+  reglas.Add(hcarcel)
+  reglas.Add(hcasillasDados)
+  reglas.Add(f)
+  reglas.Add(pen)
+  reglas.Add(poz)
+  reglas.Add(puen)
+  reglas.Add(casillauno)
+  reglas.Add(s)
+
+  'iniciar dado
+  dado.iniciar()
+  'iniciar turno.
+  Dim tirada As Integer
+
+  Dim findejuego As Boolean = False
+
+  While findejuego = False
+
+    For Each jtmp In listaJugadores
+      jtmp.turno += 1
+
+      If jtmp.turno < 0 Then
+        Print "El jugador " & jtmp.nombre & ", salta el turno"
+      Else
+        tirada = dado.tirar()
+        Print "Juega el jugador " & jtmp.nombre & ", esta en la casilla: " & jtmp.situcasilla & ", tira el dado y sale: " & tirada
+
+        jtmp.situcasilla += tirada
+        'aplico las reglas despues de tirar el dado...
+
+        For Each rtmp In reglas
+          'compruebo reclas
+          msg = rtmp.ejecuta(jtmp)
+          If msg.valor = 999 Then
+            Print "**************************"
+            Print "Fin del juego...."
+            Print "**************************"
+            findejuego = True 'fin del juego
+            Break
+          Endif
+
+        Next
+        If findejuego = True Then Break
+      Endif
+    Next
+  Wend
+  Quit
+
+End

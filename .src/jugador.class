@@ -1,0 +1,76 @@
+' Gambas class file
+
+Property nombre As String
+Private hnombre As String
+
+Property situcasilla As Integer
+Private hsitucasilla As Integer
+
+Property turno As Integer
+Private hturno As Integer
+
+Public Sub _new(n As String, p As Integer)
+
+  hnombre = n
+  hsitucasilla = p
+
+End
+
+Private Function nombre_Read() As String
+
+  Return hnombre
+
+End
+
+Private Sub nombre_Write(Value As String)
+
+  hnombre = value
+
+End
+
+Private Function situcasilla_Read() As Integer
+
+  Return hsitucasilla
+
+End
+
+Private Sub situcasilla_Write(Value As Integer)
+
+  hsitucasilla = value
+
+End
+
+Public Sub tirarDado(turno As Integer)
+
+End
+
+Public Function activo() As Boolean
+
+  'cayo en pension, esperar dos turnos
+  'cayo en pozo: espera un turno
+  'cayo en carcel esperar 3 turno
+  'contador de turnos de espera...
+  If hturno = 0 Then
+    Return True
+  Else
+    hturno += 1
+    Return False
+  Endif
+
+End
+
+Private Function turno_Read() As Integer
+
+  Return hturno
+
+End
+
+Private Sub turno_Write(Value As Integer)
+
+  If value > 0 Then
+    hturno = 0
+  Else
+    hturno = value
+  Endif
+
+End

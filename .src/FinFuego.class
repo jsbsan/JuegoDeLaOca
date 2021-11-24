@@ -1,0 +1,30 @@
+' Gambas class file
+
+Inherits Regla
+
+Public Function ejecuta(hjugador As Jugador) As Mensaje'
+
+  Dim diferencia As Integer
+  Dim mensajeTmp As New Mensaje
+
+  mensajeTmp.texto = ""
+  mensajeTmp.valor = True
+  If hjugador.situcasilla = 63 Then
+
+    mensajeTmp.texto = "Fin del Juego: El jugador " & hjugador.nombre & " llego al final del tablero."
+    Print mensajeTmp.texto
+    mensajeTmp.valor = 999
+  Else
+    If hjugador.situcasilla > 63 Then
+      'retrocede casilla
+      diferencia = hjugador.situcasilla - 63
+      hjugador.situcasilla = 63 - diferencia
+      mensajeTmp.texto = "El jugador " & hjugador.nombre & ", retrocede de " & diferencia & " casillas !!!"
+      Print mensajeTmp.texto
+
+    Endif
+  Endif
+
+  Return mensajeTmp
+
+End

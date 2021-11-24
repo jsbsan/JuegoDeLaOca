@@ -1,0 +1,20 @@
+' Gambas class file
+
+Inherits Regla
+'Regla:
+'si el jugador cae en la casilla 3, caerá en el pozo y no podrá tirar el dado en el siguiente turno.
+
+Public Function ejecuta(hjugador As Jugador) As Mensaje'
+
+  Dim mensajeTmp As New Mensaje
+
+  mensajeTmp.texto = ""
+  mensajeTmp.valor = True
+  If hjugador.situcasilla = 3 Then
+    Print "El jugador " & hjugador.nombre & ", ha caido  en la casilla 3, caerá en el pozo y no podrá tirar el dado en el siguiente turno."
+    hjugador.turno = -2
+
+  Endif
+  Return mensajetmp
+
+End

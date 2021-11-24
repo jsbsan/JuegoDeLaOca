@@ -1,0 +1,27 @@
+' Gambas class file
+
+Inherits Regla
+'las casillas 26 y 53 son dados. Si el jugador cae en ellas se imprimirá el texto »De dado a dado y tiro porque me ha tocado». En este caso, si cayó en la casilla 26 irá a la 53 y si cayó en la 53 irá a la 26. En ambos casos se volverá a tirar.
+
+Public Function ejecuta(hjugador As Jugador) As Mensaje'
+
+  Dim tirada As Integer
+
+  Dim mensajeTmp As New Mensaje
+  Dim saltoDeOcaAOcaTmp As New SaltoDeOcaAOca
+
+  mensajeTmp.texto = ""
+  mensajeTmp.valor = True
+
+  If hjugador.situcasilla = 26 Or hjugador.situcasilla = 53 Then
+    Print "El jugador " & hjugador.nombre & ", ha caido casilla " & hjugador.situcasilla & " y esta en la casilla de DADOS, tira de nuevo."
+    tirada = dado.tirar()
+
+    Print "Juega el jugador " & hjugador.nombre & ", esta en la casilla: " & hjugador.situcasilla & ", tira el dado y sale: " & tirada
+    hjugador.situcasilla += tirada
+    'COMPRUEBO SI CAIGO EN UNA OCA
+    saltoDeOcaAOcaTmp.ejecuta(hjugador)
+  Endif
+  Return mensajetmp
+
+End

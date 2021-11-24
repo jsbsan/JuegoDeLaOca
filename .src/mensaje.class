@@ -1,0 +1,30 @@
+' Gambas class file
+
+Property texto As String
+Property valor As Integer
+Private htexto As String
+Private hvalor As Integer
+
+Private Function texto_Read() As String
+
+  Return htexto
+
+End
+
+Private Sub texto_Write(Value As String)
+
+  htexto = Value
+
+End
+
+Private Function valor_Read() As Integer
+
+  Return hvalor
+
+End
+
+Private Sub valor_Write(Value As Integer)
+
+  hvalor = value
+
+End

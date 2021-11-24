@@ -1,0 +1,10 @@
+# Gambas Project File 3.0
+Title=oca_terminal
+Startup=Main
+Icon=oca.jpg
+Version=0.0.1
+Description="Implementacion juego simple y sus reglas: Juego de la Oca"
+Authors="Julio Sanchez Berro"
+TabSize=2
+Language=en_US
+Packager=1

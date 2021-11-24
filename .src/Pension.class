@@ -1,0 +1,20 @@
+' Gambas class file
+
+Inherits Regla
+'Regla:
+'si el jugador cae en la casilla 19, caerá en la pensión y no podrá tirar el dado en los dos siguientes turnos.
+
+Public Function ejecuta(hjugador As Jugador) As Mensaje'
+
+  Dim mensajeTmp As New Mensaje
+
+  mensajeTmp.texto = ""
+  mensajeTmp.valor = True
+  If hjugador.situcasilla = 19 Then
+    Print "El jugador " & hjugador.nombre & ", ha caido casilla 19 y está en la pension. No podrá tirar el dado en los siguiente dos turnos"
+    hjugador.turno = -3
+
+  Endif
+  Return mensajetmp
+
+End

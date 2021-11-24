@@ -1,0 +1,13 @@
+' Gambas class file
+
+Static Public Sub tirar() As Integer
+
+  Return Int(Rnd(1, 7))
+
+End
+
+Static Public Sub iniciar()
+
+  Randomize
+
+End

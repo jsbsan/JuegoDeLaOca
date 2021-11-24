@@ -1,0 +1,5 @@
+' Gambas class file
+
+Public Function ejecuta(hjugador As Jugador) As Mensaje'
+
+End
